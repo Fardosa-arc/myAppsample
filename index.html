@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   //Using HTML to Define texbox and the keys
+
+  <link rel="stylesheet" type="text/css" href="design.css">
+ </head>
+ <title> Calculator </title>
+<body>
+<div id="calculator">
+<form>
+<input type="text" id="display" disabled=""> <br/>
+<input type="button" value="C" id="keys" onclick="addtoscreen('C')">
+<input type="button" value="&larr;" id="keys" onclick="backspace()">
+<input type="button" value="X&sup3;" id="keys" onclick="power(3)">
+<input type="button" value="&radic;" id="keys" onclick="power(0.5)"> <br>
+
+<input type="button" value="9" id="keys" onclick="addtoscreen('9')">
+<input type="button" value="8" id="keys" onclick="addtoscreen('8')">
+<input type="button" value="7" id="keys" onclick="addtoscreen('7')">
+<input type="button" value="+" id="keys" onclick="addtoscreen('+')"> <br>
+
+<input type="button" value="6" id="keys" onclick="addtoscreen('6')">
+<input type="button" value="5" id="keys" onclick="addtoscreen('5')">
+<input type="button" value="4" id="keys" onclick="addtoscreen('4')">
+<input type="button" value="-" id="keys" onclick="addtoscreen('-')"> <br>
+
+<input type="button" value="3" id="keys" onclick="addtoscreen('3')">
+<input type="button" value="2" id="keys" onclick="addtoscreen('2')">
+<input type="button" value="1" id="keys" onclick="addtoscreen('1')">
+<input type="button" value="*" id="keys" onclick="addtoscreen('*')"> <br>
+
+<input type="button" value="0" id="keys" onclick="addtoscreen('0')">
+<input type="button" value="." id="keys" onclick="addtoscreen('.')" >
+<input type="button" value="=" id="keys" onclick="answer()">
+<input type="button" value="/" id="keys" onclick="addtoscreen('/')">
+
+</form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="logic.js"> </script>
+
+//Using CSS to design the outline//
+
+<style media="screen">
+h2{
+ text-align: center;
+ color: lightpink;
+}
+#calculator {
+ width: 250px;
+ height: 350px;
+ border: 5px solid black;
+text-align: center;
+ background: Red;
+ margin: 150px auto;
+box-shadow: 0px 0px 30px black;
+}
+
+#display {
+margin-top: 30px;
+margin-bottom: 20px;
+ width: 220px;
+ height: 30px;
+ border: 1px solid blue;
+box-shadow: 0px 0px 30px blue;
+text-align: right;
+ font: 20px bold;
+ color: yellow;
+
+}
+
+#keys {
+ width: 41px;
+ height: 35px;
+margin-left: 10px;
+margin-bottom: 20px;
+box-shadow: 0px 0px 20px yellow;
+ cursor: pointer;
+}
+
+#keys:hover {
+    background: green;
+font-weight: bold;
+}
+</style>
+
+//using  JSS to build the functunalities//
+
+</body>
+  <script>
+
+
+  var box=document.getElementById('display');
+  function addtoscreen(x) {
+  box.value +=x;
+  if(x=='C'){
+  box.value='';
+  }
+  }
+  function answer(){
+  x=box.value;
+  x=eval(x);
+  box.value=x;
+  }
+  function backspace(){
+  var number=box.value;
+  var len=number.length-1;
+  var newnumber=number.substring(0,len);
+  box.value = newnumber;
+  }
+  function power(y){
+  x=box.value;
+  box.value='';
+  x=Math.pow(x,y);
+  box.value=x;
+  }
+
+  $(document).keypress(function(e) {
+  var key = e.which;
+  switch (key)
+  {
+  case 48:
+  //alert("0");
+  addtoscreen('0');
+  break;
+  case 49:
+  //alert("1");
+  addtoscreen('1');
+  break;
+  case 50:
+  // alert("2");
+  addtoscreen('2');
+  break;
+  case 51:
+  // alert("3");
+  addtoscreen('3');
+  break;
+  case 52:
+  // alert("4");
+  addtoscreen('4');
+  break;
+  case 53:
+  // alert("5");
+  addtoscreen('5');
+  break;
+  case 54:
+  // alert("6");
+  addtoscreen('6');
+  break;
+  case 55:
+  // alert("7");
+  addtoscreen('7');
+  break;
+  case 56:
+  // alert("8");
+  addtoscreen('8');
+  break;
+  case 57:
+  // alert("9");
+  addtoscreen('9');
+  break;
+  case 67:
+  // alert("C");
+  addtoscreen('C');
+  break;
+  case 66:
+  // alert("B");
+  backspace();
+  break;
+  case 65:
+  // alert("A");
+  addtoscreen('+');
+  break;
+  case 83:
+  // alert("S");
+  addtoscreen('-');
+  break;
+  case 77:
+  // alert("M");
+  addtoscreen('*');
+  break;
+  case 68:
+  // alert("D");
+  addtoscreen('/');
+  break;
+  case 80:
+  // alert("P");
+  addtoscreen('.');
+  break;
+  case 69:
+  // alert("E");
+  answer();
+  break;
+  default:
+  alert("Invalid");
+  }
+}
+);
+
+
+</script>
+</html>
